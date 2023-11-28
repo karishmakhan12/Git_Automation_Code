@@ -13,5 +13,5 @@ public class CommonConstant {
 	public static final String REP_NAME_PATH = "//*[@id=\":r2:\"]";
 	public static final String REP_NAME = "Git_Automation_Code2";
 	public static final String CREAT_PATH = "/html/body/div[1]/div[6]/main/react-app/div/form/div[5]/button/span/span";
-
+	public static final String SCROLL_WINDOW_DOWN_SIZE = "window.scrollBy(0,350)";
 }

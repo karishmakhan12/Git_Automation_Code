@@ -22,7 +22,7 @@ public class GithubAutomation {
 		driver.findElement(By.xpath(CommonConstant.NEW_BTN_PATH)).click();
 		driver.findElement(By.xpath(CommonConstant.REP_NAME_PATH)).sendKeys(CommonConstant.REP_NAME);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,350)", "");
+		js.executeScript(CommonConstant.SCROLL_WINDOW_DOWN_SIZE, "");
 		Thread.sleep(3000);
 		driver.findElement(By.xpath(CommonConstant.CREAT_PATH)).click();
 	}
