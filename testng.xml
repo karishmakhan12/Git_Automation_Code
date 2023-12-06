@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="GithubAutomation">
+	<listeners>
+		<listener class-name="utilities.GenerateExtentReports"/>
+	</listeners>
+  <test  name="GitAutomate">
+    <classes>
+      <class  name="com.git.GithubAutomation">
+		  <methods>
+			  <include name="Login"/>
+			  <include name="CreatingNewRepo"/>
+			   <include name="ReproCounting"/>
+			   <include name="DeleteRepoFromList"/>
+			  
+		  </methods>
+		  </class>
+    </classes>
+  </test> <!-- Test -->
+  
+</suite> <!-- Suite -->

@@ -1,29 +1,45 @@
 package com.git;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
 
 public class GithubAutomation {
+	
+	@Test(priority=1)
 
-	public static void main(String[] args) throws InterruptedException {
-		WebDriver driver = new ChromeDriver();
-		driver.get(CommonConstant.WEBSITE_ADDRESS);
-		System.out.println(driver.getTitle());
-		System.out.println(driver.getCurrentUrl());
-		Thread.sleep(1000);
-		driver.findElement(By.xpath(CommonConstant.SINGIN_BUTTON_PATH)).click();
-		Thread.sleep(3000);
-		driver.findElement(By.xpath(CommonConstant.EMAIL_PATH)).sendKeys(CommonConstant.EMAIL_ADDRESS);
-		driver.findElement(By.xpath(CommonConstant.PASSWORD_PATH)).sendKeys(CommonConstant.PASSWORD_ADDRESS);
-		driver.findElement(By.xpath(CommonConstant.SINGIN_PATH)).click();
-		driver.getCurrentUrl();
-		Thread.sleep(3000);
-		driver.findElement(By.xpath(CommonConstant.NEW_BTN_PATH)).click();
-		driver.findElement(By.xpath(CommonConstant.REP_NAME_PATH)).sendKeys(CommonConstant.REP_NAME);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript(CommonConstant.SCROLL_WINDOW_DOWN_SIZE, "");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath(CommonConstant.CREAT_PATH)).click();
+	public void Login() throws InterruptedException {
+		GitLogin gl = new GitLogin(); 
+	String s = gl.gitLoginPage();
+	Assert.assertEquals(CommonConstant.ACTUAL_NAME,s );
+
 	}
+
+	@Test (priority=2)
+	public void CreatingNewRepo() throws InterruptedException {
+		CreateRep cr = new CreateRep();
+		cr.createRepro();
+		Reporter.log("Success");
+	}
+
+
+	@Test(priority=3)
+	public void ReproCounting() throws InterruptedException {
+		ReproNameViaList rvl = new ReproNameViaList();
+		boolean myRepo =rvl.reproNameViaList();
+		Thread.sleep(3000);
+		Assert.assertEquals(true,myRepo );
+
+	}
+	@Test(priority=4)
+	public void DeleteRepoFromList() throws InterruptedException {
+		DeleteRepo dr = new DeleteRepo();
+		dr.deleteRepo();
+	}
+
+
 }
+
